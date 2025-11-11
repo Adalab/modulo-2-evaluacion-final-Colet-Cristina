@@ -6,23 +6,21 @@
     <title>Tiendecita</title>
     <link rel="stylesheet" href="./css/main.css" />
   </head>
-  
+  <!-- -------------  -----------------  -->
   <body>
+    <!-- ------------------------------  -->
     <header>
-    <div class=" content">
       <div class="header">
         <h1>Tiendecita</h1>
       </div>
     </header>
     <main class="main js_main">
-
-       <!-- ---------- carrito ---------------  -->
+      <!-- ---------- carrito ---------------  -->
       <div class="cart js_cart">
-          <h2>Carrito</h2>
-          <ul class="cart-list js_cartList"></ul>
-          <button class="cart-delete js_cartDelete">Borrar</button>
+        <h2>Carrito</h2>
+        <button class="cart-delete js_cartDelete">Borrar</button>
+        <ul class="cart-list js_cartList"></ul>
       </div>
-
       <!-- -----------Buscador ------------------  -->
       <div class="filter js_filter">
         <input
@@ -31,16 +29,29 @@
         />
         <button class="filter-btn js_filterBtn">Buscar</button>
       </div>
-      
-        <!-- ------------Productos------------------  -->
-        <div class="products js_products">
-          <h2 class="products-title">Productos</h2>
-          <ul class="products-list js_productsList"></ul>
-        </div>
+
+      <!-- ------------Productos------------------  -->
+      <div class="products js_products">
+        <h2 class="products-title">Productos</h2>
+        <ul class="products-list js_productsList">
+          <li class="product-item">
+            <p>
+              Mochila Fjallraven Foldsack No. 1, para portátiles de 15 pulgadas
+            </p>
+            <div class="product-img js_productImg">
+              <img
+                src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"
+                alt="Mochila azul para portatil"
+              />
+            </div>
+            <h3 class="product-category js_productCategory">Ropa de hombre</h3>
+            <p>109.95 €</p>
+          </li>
+        </ul>
       </div>
-    </div>
     </main>
+    <!-- ------------------------------  -->
     <script src="./js/main.js"></script>
   </body>
-  
+  <!-- ------------------------------  -->
 </html>

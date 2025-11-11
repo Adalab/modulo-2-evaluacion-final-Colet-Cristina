@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tiendecita</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  
+  <body>
+    <header>
+    <div class=" content">
+      <div class="header">
+        <h1>Tiendecita</h1>
+      </div>
+    </header>
+    <main class="main js_main">
+
+       <!-- ---------- carrito ---------------  -->
+      <div class="cart js_cart">
+          <h2>Carrito</h2>
+          <ul class="cart-list js_cartList"></ul>
+          <button class="cart-delete js_cartDelete">Borrar</button>
+      </div>
+
+      <!-- -----------Buscador ------------------  -->
+      <div class="filter js_filter">
+        <input
+          class="filter-input js_filterInput"
+          placeholder="Ejemplo: Mujer"
+        />
+        <button class="filter-btn js_filterBtn">Buscar</button>
+      </div>
+      
+        <!-- ------------Productos------------------  -->
+        <div class="products js_products">
+          <h2 class="products-title">Productos</h2>
+          <ul class="products-list js_productsList"></ul>
+        </div>
+      </div>
+    </div>
+    </main>
+    <script src="./js/main.js"></script>
+  </body>
+  
+</html>

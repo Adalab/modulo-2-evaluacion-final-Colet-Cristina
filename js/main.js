@@ -1,14 +1,12 @@
 "use strict";
 
-"use strict";
-
 // SECCIÓN DE QUERY-SELECTOR
 
 const productsList = document.querySelector(".js_productsList");
 
 //SECCIÓN DE DATOS
 
-let products = [];
+let products = []; // estan guardados los productos del servidor
 
 // SECCIÓN DE FUNCIONES
 
@@ -24,6 +22,7 @@ function remderProductsList(item) {
   </li>`;
   return html;
 }
+
 function renderProducts() {
   let html = "";
   for (const oneProductsList of products) {
@@ -33,19 +32,22 @@ function renderProducts() {
   productsList.innerHTML = html;
 }
 
-// SECCIÓN DE EVENTOS
+const dataInLS = JSON.parse(localStorage.getItem("productsBackup"));
 
-// SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA
+if (dataInLS === null) {
+  fetch("https://fakestoreapi.com/products")
+    .then((res) => res.json())
+    .then((data) => {
+      products = data;
 
-fetch("https://fakestoreapi.com/products")
-  .then((res) => res.json())
-  .then((data) => {
-    products = data;
-    renderProducts();
-  })
-  .catch((error) => {
-    console.error("Error al cargar productos:", error);
-  });
+      localStorage.setItem("productsBackup", JSON.stringify(products));
 
-renderProducts(products);
-console.log("Página y JS cargados!");
+      renderProducts(products);
+    })
+    .catch((error) => {
+      console.error("Error al cargar productos:", error);
+    });
+} else {
+  products = dataInLS;
+  renderProducts(products);
+}

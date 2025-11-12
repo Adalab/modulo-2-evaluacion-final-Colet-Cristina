@@ -10,47 +10,49 @@
 }
 
 .header {
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: rgb(100, 7, 100);
+  padding: 0.625rem;
+  margin-bottom: 0.625rem;
+  background-color: #6303b1;
   color: white;
   text-align: center;
-  margin: 40px;
+  margin: 2.5rem;
 }
+
 .cart {
-  padding: 20px;
+  padding: 4rem;
 }
+
 .cart-delete {
-  background-color: purple;
+  background-color: #6303b1;
   color: white;
   border: none;
-  border-radius: 6px;
-  padding: 10px 16px;
+  border-radius: 0.375rem;
+  padding: 0.625rem 1rem;
   gap: 2rem;
+  margin-top: 1.5rem;
 }
+
 .filter {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 30px;
+  gap: 0.625rem;
+  padding: 1.25rem;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.875rem;
 }
 
 .filter-input {
-  padding: 10px;
-  border-radius: 6px;
+  padding: 0.625rem;
+  border-radius: 0.375rem;
 }
 
 .filter-btn {
-  background-color: purple;
+  background-color: #6303b1;
   color: white;
   border: none;
-  border-radius: 6px;
-  padding: 10px 16px;
+  border-radius: 0.375rem;
+  padding: 0.625rem 1rem;
 }
 
 .filter-btn:hover {
@@ -58,18 +60,42 @@
 }
 
 .products {
-  width: 100%;
-  max-width: 900px;
+  max-width: 56.25rem;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .products-title {
-  display: flex;
-  justify-content: center;
-  margin-left: 8rem;
-  margin-bottom: 20px;
+  padding: 0.5625rem;
+  margin-bottom: 0.625rem;
+  color: #6303b1;
+  text-align: center;
+  margin: 2.5rem;
+}
+.products-list {
+  display: flex; /* Coloca los <li> en fila horizontal */
+  flex-wrap: wrap; /* Si hay muchos, saltan de línea */
+  justify-content: center; /* Centra los productos */
+  gap: 1.25rem;
+  list-style: none; /* Quita los puntos */
+  padding: 0;
+  margin: 0 auto;
 }
 
-.products-list {
-  display: grid;
-  gap: 20px;
+.products-list li {
+  display: flex;
+  flex-direction: column; /* Imagen arriba, texto abajo */
+  align-items: center;
+  border: 0.1rem solid #6303b1;
+  border-radius: 0.625rem;
+  width: 12.5rem;
+  box-shadow: 0 0.125rem 0.375rem rgba(0, 0, 0, 0.5);
+  padding: 0.625rem;
+}
+
+.product-img img {
+  width: 7.5rem;
+  height: auto; /* Mantiene proporciones */
+  object-fit: contain;
+  margin-bottom: 0.625rem;
 }

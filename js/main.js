@@ -12,7 +12,7 @@ let products = [];
 
 // SECCIÓN DE FUNCIONES
 
-function remderProductsList(item) {
+function renderProductsList(item) {
   const html = `
  <li class="product-item">
   <p> ${item.title}</p>
@@ -28,7 +28,7 @@ function remderProductsList(item) {
 function renderProducts() {
   let html = "";
   for (const oneProductsList of products) {
-    html += remderProductsList(oneProductsList);
+    html += renderProductsList(oneProductsList);
   }
 
   productsList.innerHTML = html;
@@ -37,7 +37,7 @@ function renderProducts() {
 function renderFilteredProducts(filteredList) {
   let html = "";
   for (const product of filteredList) {
-    html += remderProductsList(product);
+    html += renderProductsList(product);
   }
   productsList.innerHTML = html;
 }

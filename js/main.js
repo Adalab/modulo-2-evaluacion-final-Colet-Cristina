@@ -98,7 +98,7 @@ filterBtn.addEventListener("click", handleFilterClick);
 productsList.addEventListener("click", (event) => {
   if (event.target.classList.contains("js_add")) {
     const productId = parseInt(event.target.dataset.id);
-    const selectedProduct = products.filter((p) => p.id === productId);
+    const selectedProduct = products.find((p) => p.id === productId);
     // Busca el producto en la lista principal
 
     // Añadimos el producto al array del carrito

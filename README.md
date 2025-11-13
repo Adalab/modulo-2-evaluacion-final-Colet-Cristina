@@ -1,23 +1,51 @@
-**Proyecto Tiendecita online 🛒**
+🛒 **Tiendecita Online**
 
-La pagina muestra una lista de productos, permite buscar productos por nombre, categoría o descripción.
-Hecho con _HTML, CSS y JavaScript_
+    Tiendecita Online es una aplicación web sencilla desarrollada con HTML, CSS y JavaScript que permite visualizar, buscar y gestionar productos obtenidos desde una API. Además, incluye un carrito de compras y almacenamiento local para mejorar la experiencia del usuario.
 
-**Funciones**
+✨ **Funcionalidades principales**
 
-- Carga productos desde una API.
-- Los guarda en localStorage.
-- Filtra los productos escribiendo en un input y pulsando el botón "Buscar".
-- Muestra el título, imagen, categoría y precio de cada producto.
+    - Carga de productos desde una API externa.
 
-**Cómo funciona**
+    - Almacenamiento en localStorage para evitar recargar los datos cada vez.
 
-- Cuando se carga la página:
+    - Búsqueda de productos por nombre, categoría o descripción.
 
-- Si no hay productos guardados, los pide a la API.
+    - Visualización de productos, mostrando:
 
-- Si ya los tiene en localStorage, los carga desde ahí.
+        - Título
 
-- Puedes escribir en el buscador y pulsar Buscar.
+        - Imagen
 
-- Solo se mostrarán los productos que coincidan con el texto que escribas.
+        - Precio
+
+    - Carrito de compras donde puedes guardar productos seleccionados.
+
+⚙️ **Cómo funciona**
+
+    Al cargar la página:
+
+    - Si no hay productos en el localStorage, se obtienen desde la API.
+
+    - Si ya existen productos guardados, se cargan directamente desde el localStorage.
+
+    - Búsqueda:
+
+        - Escribe el texto que desees (nombre, categoría o descripción) en el campo de búsqueda.
+
+        - Pulsa el botón Buscar para filtrar los productos que coincidan.
+
+    - Carrito de compras:
+
+        - Puedes agregar productos al carrito y mantenerlos guardados mientras navegas por la tienda.
+
+💾 **Tecnologías utilizadas**
+
+        - HTML
+
+        - CSS
+
+        - JavaScript
+
+        - API externa
+
+        - localStorage

@@ -84,9 +84,7 @@ if (dataInLS === null) {
 
       renderProducts(products);
     })
-    .catch((error) => {
-      console.error("Error al cargar productos:", error);
-    });
+    .catch((error) => {});
 } else {
   products = dataInLS;
   renderProducts(products);

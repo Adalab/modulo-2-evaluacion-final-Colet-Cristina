@@ -1,0 +1,16 @@
+@use "../core/variables" as vars;
+.add {
+  background-color: vars.$primary-color;
+  color: vars.$text-light;
+  border: none;
+  border-radius: vars.$border-radius;
+  padding: 0.3rem 1.5rem;
+  margin-top: 0.5rem;
+  box-shadow: vars.$shadow;
+  cursor: pointer;
+}
+
+.add--red {
+  background-color: vars.$accent-color;
+  color: vars.$text-dark;
+}

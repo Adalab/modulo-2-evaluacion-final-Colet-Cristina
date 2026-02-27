@@ -1,4 +1,5 @@
 "use strict";
+import "../scss/main.scss";
 
 // SECCIÓN DE QUERY-SELECTOR  =================================================
 
@@ -71,21 +72,29 @@ function renderFilteredProducts(filteredList) {
 
 //  Esta función pinta carrito
 function renderCart() {
-  let html = "";
+  cartList.innerHTML = "";
   for (const item of cart) {
-    html += `
+    const totalItemPrice = (item.price * item.quantity).toFixed(2);
+
+    cartList.innerHTML += `
 <li class="cart-item">
       <div class="cart-item-info">
         <p>${item.title}</p>
         <div class="product-img js_productImg">
-          <img src="${item.image || "./images/undefined.png"}" alt="${item.title}">
+          <img src="${item.image || "../images/undefined.png"}" alt="${item.title}">
         </div>
-        <p>${item.price}€</p>
+
+       <div class="quantity-controls">
+          <button class="js_minus" data-id="${item.id}">-</button>
+        <span>${item.quantity || 1}</span>
+          <button class="js_plus" data-id="${item.id}">+</button>
+        </div>
+        
+        <p>Total: ${totalItemPrice}€</p>
       </div>
       <button class="cart-item-remove js_removeSingle" data-id="${item.id}">X</button>
     </li>`;
   }
-  cartList.innerHTML = html;
 }
 
 // SECCIÓN DE FUNCIONES MANEJADORAS (HANDLERS)  ==================================================
@@ -128,7 +137,7 @@ productsList.addEventListener("click", (event) => {
     if (indexInCart === -1) {
       // SI NO ESTÁ: Lo buscamos en la lista original y lo añadimos
       const selectedProduct = products.find((p) => p.id === productId);
-      cart.push(selectedProduct);
+      cart.push({ ...selectedProduct, quantity: 1 });
     } else {
       // SI YA ESTÁ: Lo quitamos del array usando su índice
       cart.splice(indexInCart, 1);
@@ -142,22 +151,41 @@ productsList.addEventListener("click", (event) => {
     updateCartCounter();
   }
 });
-// Borrar producto individual con la "X"
 cartList.addEventListener("click", (event) => {
-  // Comprobamos si el clic fue en el botón de la "X"
-  if (event.target.classList.contains("js_removeSingle")) {
-    const productId = parseInt(event.target.dataset.id);
+  // 1. Identificar qué botón se ha pulsado
+  const isPlus = event.target.classList.contains("js_plus");
+  const isMinus = event.target.classList.contains("js_minus");
+  const isRemove = event.target.classList.contains("js_removeSingle");
 
-    // Filtramos el carrito: nos quedamos con todo MENOS con el ID clicado
-    cart = cart.filter((item) => item.id !== productId);
+  // Si no hemos clicado en ninguno de estos, no hacemos nada
+  if (!isPlus && !isMinus && !isRemove) return;
 
-    // Actualizamos LocalStorage y volvemos a pintar
-    localStorage.setItem("cartData", JSON.stringify(cart));
+  const productId = parseInt(event.target.dataset.id);
+  const index = cart.findIndex((item) => item.id === productId);
 
-    renderCart();
-    renderProducts(); // Importante para que el botón de la lista principal vuelva a decir "add"
-    updateCartCounter();
+  if (index === -1) return;
+
+  // 2. Ejecutar la acción según el botón
+  if (isPlus) {
+    cart[index].quantity += 1;
+  } else if (isMinus) {
+    if (cart[index].quantity > 1) {
+      cart[index].quantity -= 1;
+    } else {
+      cart[index].quantity = 0; // Preparamos para borrar
+    }
   }
+
+  // 3. Acción común: eliminar si la cantidad es 0 o si se pulsó la X
+  if (cart[index].quantity === 0 || isRemove) {
+    cart.splice(index, 1);
+  }
+
+  // 4. Guardar y refrescar todo
+  localStorage.setItem("cartData", JSON.stringify(cart));
+  renderCart();
+  renderProducts();
+  updateCartCounter();
 });
 
 // Borrar productos del carrito

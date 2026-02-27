@@ -4,48 +4,26 @@
 
 ✨ **Funcionalidades principales**
 
-    - Carga de productos desde una API externa.
-
-    - Almacenamiento en localStorage para evitar recargar los datos cada vez.
-
-    - Búsqueda de productos por nombre, categoría o descripción.
-
-    - Visualización de productos, mostrando:
-
-        - Título
-
-        - Imagen
-
-        - Precio
-
-    - Carrito de compras donde puedes guardar productos seleccionados.
+- **Carga Dinámica:** Obtención de productos desde la API externa de FakeStore.
+- **Persistencia de Datos:** Uso de `localStorage` para mantener los productos y el estado del carrito incluso tras refrescar la página.
+- **Buscador Inteligente:** Filtrado por título y descripción en tiempo real.
+- **Gestión Avanzada del Carrito:** - Añadir/Quitar productos (Toggle).
+  - Borrado individual de elementos (Bonus).
+  - Vaciado completo del carrito.
+  - Contador de productos sincronizado.
 
 ⚙️ **Cómo funciona**
 
-    Al cargar la página:
+1. **Inicio:** La app comprueba si hay un "backup" en el almacenamiento local. Si no, conecta con la API.
+2. **Búsqueda:** Filtra el array de productos original y re-pinta la interfaz sin recargar la página.
+3. **Carrito:** Al añadir un producto, se actualiza el array `cart`, se guarda en el navegador y se sincronizan los botones de la lista principal (cambiando de color/texto).
 
-    - Si no hay productos en el localStorage, se obtienen desde la API.
+💾 Tecnologías utilizadas
 
-    - Si ya existen productos guardados, se cargan directamente desde el localStorage.
+HTML5: Estructura semántica (ul, li, section).
 
-    - Búsqueda:
+CSS3: Diseño responsivo mediante CSS Grid y Flexbox.
 
-        - Escribe el texto que desees (nombre, categoría o descripción) en el campo de búsqueda.
+JavaScript (ES6): Manipulación del DOM, eventos, Fetch API y métodos de arrays (filter, find, findIndex).
 
-        - Pulsa el botón Buscar para filtrar los productos que coincidan.
-
-    - Carrito de compras:
-
-        - Puedes agregar productos al carrito y mantenerlos guardados mientras navegas por la tienda.
-
-💾 **Tecnologías utilizadas**
-
-        - HTML
-
-        - CSS
-
-        - JavaScript
-
-        - API externa
-
-        - localStorage
+FakeStore API: Fuente de datos externa.

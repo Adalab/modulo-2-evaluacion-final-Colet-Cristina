@@ -1,31 +1,50 @@
 "use strict";
 
-// SECCIÓN DE QUERY-SELECTOR  ----------------------------------------------------
+// SECCIÓN DE QUERY-SELECTOR  =================================================
 
 const productsList = document.querySelector(".js_productsList");
 const filterInput = document.querySelector(".js_filterInput");
 const filterBtn = document.querySelector(".js_filterBtn");
 const cartList = document.querySelector(".js_cartList");
 const cartDeleteBtn = document.querySelector(".js_cartDelete");
+const numberProducts = document.querySelector(".js_numberProducts");
+const scrollTopBtn = document.querySelector(".js_scrollTop");
 
-// SECCIÓN DE DATOS  ----------------------------------------------------
+// SECCIÓN DE DATOS  ==========================================================
 // Variables que creamos para almacenar información
 
-let products = []; // Están guardados los productos del servidor
-let cart = []; // Se guardan los productos del carrito
+let products = []; // Guarda los productos del servidor
+let cart = []; // Guarda los  productos del carrito
 
-// SECCIÓN DE FUNCIONES  ----------------------------------------------------
+// SECCIÓN DE FUNCIONES DE PINTADO (RENDER)  ======================================================
 
-// Esta función recibe un producto y devuelve el HTML que lo representa
+function updateCartCounter() {
+  if (numberProducts) {
+    numberProducts.innerHTML = cart.length;
+  }
+}
+
+// Esta función recibe un producto y devuelve el HTML que lo representa( interpolación)
 function renderProductsList(item) {
+  const productImage = item.image || "./images/undefined.png";
+
+  // Usamos .find() para ver si el id del producto existe en nuestro array 'cart'
+  const isSelected = cart.find((cartItem) => cartItem.id === item.id);
+
+  // Definimos la clase y el texto
+  // Si existe (isSelected no es undefined), ponemos la clase roja y el texto 'delete'
+  const buttonClass = isSelected ? "add add--red" : "add";
+  const buttonText = isSelected ? "delete" : "add";
+
   const html = `
  <li class="product-item">
   <p> ${item.title}</p>
   <div class="product-img js_productImg">
-      <img src="${item.image}" alt="Imagen de ${item.title}">
+      <img src="${productImage}" alt="Imagen de ${item.title}">
   </div>
+  <p class= "category js_category"> ${item.category}</p>
   <p> ${item.price}€</p>
-   <button class="add js_add" data-id="${item.id}">add</button>
+   <button class="${buttonClass} js_add" data-id="${item.id}">${buttonText}</button>
   </li>`;
   return html;
 }
@@ -55,17 +74,21 @@ function renderCart() {
   let html = "";
   for (const item of cart) {
     html += `
-<p> ${item.title}</p>
-  <div class="product-img js_productImg">
-      <img src="${item.image}" alt="Imagen de ${item.title}">
-  </div>
-  <p> ${item.price}€</p>`;
+<li class="cart-item">
+      <div class="cart-item-info">
+        <p>${item.title}</p>
+        <div class="product-img js_productImg">
+          <img src="${item.image || "./images/undefined.png"}" alt="${item.title}">
+        </div>
+        <p>${item.price}€</p>
+      </div>
+      <button class="cart-item-remove js_removeSingle" data-id="${item.id}">X</button>
+    </li>`;
   }
   cartList.innerHTML = html;
 }
 
-// SECCIÓN DE FUNCIONES DE EVENTOS  ----------------------------------------------------
-// Funciones handler/manejadoras de eventos
+// SECCIÓN DE FUNCIONES MANEJADORAS (HANDLERS)  ==================================================
 
 //Filtra los productos
 const handleFilterClick = (ev) => {
@@ -89,7 +112,7 @@ const handleFilterClick = (ev) => {
   renderFilteredProducts(filterProducts); //Los muestra en la página
 };
 
-// SECCIÓN DE EVENTOS  ----------------------------------------------------
+// SECCIÓN DE EVENTOS (LISTENERS)  ==================================================
 
 // Filtramos productos
 filterBtn.addEventListener("click", handleFilterClick);
@@ -98,35 +121,42 @@ filterBtn.addEventListener("click", handleFilterClick);
 productsList.addEventListener("click", (event) => {
   if (event.target.classList.contains("js_add")) {
     const productId = parseInt(event.target.dataset.id);
-    const selectedProduct = products.find((p) => p.id === productId);
-    // Busca el producto en la lista principal
 
-    // Añadimos el producto al array del carrito
-    cart.push(selectedProduct);
+    // Buscamos si el producto está en el carrito
+    const indexInCart = cart.findIndex((item) => item.id === productId);
 
-    // Guardamos el carrito actualizado en localStorage
+    if (indexInCart === -1) {
+      // SI NO ESTÁ: Lo buscamos en la lista original y lo añadimos
+      const selectedProduct = products.find((p) => p.id === productId);
+      cart.push(selectedProduct);
+    } else {
+      // SI YA ESTÁ: Lo quitamos del array usando su índice
+      cart.splice(indexInCart, 1);
+    }
+    // Guardamos el carrito actualizado
     localStorage.setItem("cartData", JSON.stringify(cart));
 
-    // Mostramos el carrito actualizado
+    // Re-pintar productos, la función renderProductsList
+    renderProducts();
     renderCart();
+    updateCartCounter();
   }
 });
+// Borrar producto individual con la "X"
+cartList.addEventListener("click", (event) => {
+  // Comprobamos si el clic fue en el botón de la "X"
+  if (event.target.classList.contains("js_removeSingle")) {
+    const productId = parseInt(event.target.dataset.id);
 
-// Cambiamos color al botón add
-document.addEventListener("click", (event) => {
-  // Solo actúa si el clic viene de un botón con clase js_add
-  if (event.target.classList.contains("js_add")) {
-    const button = event.target;
+    // Filtramos el carrito: nos quedamos con todo MENOS con el ID clicado
+    cart = cart.filter((item) => item.id !== productId);
 
-    // Alterna la clase roja
-    button.classList.toggle("add--red");
+    // Actualizamos LocalStorage y volvemos a pintar
+    localStorage.setItem("cartData", JSON.stringify(cart));
 
-    //Cambia el texto
-    if (button.textContent === "add") {
-      button.textContent = "delete";
-    } else {
-      button.textContent = "add";
-    }
+    renderCart();
+    renderProducts(); // Importante para que el botón de la lista principal vuelva a decir "add"
+    updateCartCounter();
   }
 });
 
@@ -138,9 +168,18 @@ cartDeleteBtn.addEventListener("click", (ev) => {
   localStorage.removeItem("cartData");
   // Mostramos el carrito actualizado
   renderCart();
+  renderProducts();
+  updateCartCounter();
 });
 
-// SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA ----------------------------------------------------
+scrollTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // Desplazamiento suave
+  });
+});
+
+// SECCIÓN DE ACCIONES AL CARGAR LA PÁGINA ==================================================
 
 // Sacamos info del LS:
 const dataInLS = JSON.parse(localStorage.getItem("productsBackup"));
@@ -169,4 +208,5 @@ const cartInLS = JSON.parse(localStorage.getItem("cartData"));
 if (cartInLS !== null) {
   cart = cartInLS; // Recupera el carrito
   renderCart(); // Lo muestra en la página
+  updateCartCounter();
 }

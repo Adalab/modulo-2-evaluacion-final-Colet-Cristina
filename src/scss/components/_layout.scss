@@ -29,3 +29,24 @@ body {
 .shop {
   text-align: center;
 }
+
+/* ================ FOOTER ================ */
+.footer {
+  padding: 0.5rem;
+  background-color: vars.$primary-color;
+  color: vars.$text-light;
+  text-align: center;
+
+  box-shadow: vars.$shadow;
+
+  span {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  .text-footer {
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+}

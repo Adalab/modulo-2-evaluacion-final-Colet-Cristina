@@ -1,40 +1,53 @@
-# Mi proyecto
+# Little Shop 🛍️
 
-A rellenar
+Bienvenida al repositorio de **Little Shop**, una tienda online desarrollada como proyecto final. Esta aplicación permite a los usuarios visualizar productos, filtrarlos por nombre y gestionar un carrito de la compra de forma dinámica.
 
-## Guía de inicio rápido
+## Características
 
-> **NOTA:** Necesitas tener instalado [Node JS](https://nodejs.org/) con una versión superior a la 14 para trabajar con este Starter Kit:
+- **Visualización de productos:** Listado dinámico de artículos.
+- **Filtrado en tiempo real:** Busca tus productos favoritos fácilmente.
+- **Gestión de carrito:** Añade o elimina productos y visualiza el total de artículos.
+- **Diseño Responsivo:** Adaptado para diferentes tamaños de pantalla.
+- **Arquitectura Modular:** Código organizado utilizando SASS (partials) y Módulos de JavaScript.
 
-### Pasos a seguir cada vez que queremos arrancar un proyecto desde cero:
+## Tecnologías utilizadas
 
-1. **Crea tu propio repositorio.**
-1. Descarga este **Starter kit desde GitHub**.
-   - No recomendamos que clones este repo ya que no podrás añadir commits.
-1. **Copia todos los ficheros** de este Starter kit en la carpeta raíz de tu repositorio.
-   - Recuerda que debes copiar **también los ficheros ocultos** que comienzan por un punto.
-   - Si has decidido clonar este repo, no debes copiar la carpeta `.git`. Si lo haces estarás machacando tu propio repositorio.
-1. **Abre una terminal** en la carpeta raíz de tu repositorio.
-1. **Instala las dependencias** locales ejecutando en la terminal el comando:
+- **HTML5**
+- **SASS (SCSS):** Organización mediante arquitectura modular (Core/Components).
+- **JavaScript (ES Modules):** Lógica modular para la gestión del carrito y productos.
+- **Vite:** Herramienta de compilación y servidor de desarrollo.
 
-```bash
+## Estructura del proyecto
+
+La estructura sigue un patrón de diseño profesional para facilitar el mantenimiento:
+
+```text
+├── public/          # Assets estáticos (favicon, imágenes)
+├── src/
+│   ├── js/          # Lógica JavaScript (módulos)
+│   └── scss/        # Estilos SASS divididos en core y components
+├── index.html       # Estructura principal
+└── vite.config.js   # Configuración de Vite
+```
+
+Instalación y ejecución
+Clona el repositorio:
+
+`Bash
+git clone [url-de-tu-repositorio]
+`
+
+Instala las dependencias:
+
+`Bash
 npm install
-```
+`
 
-### Pasos para arrancar el proyecto:
+Inicia el servidor de desarrollo:
 
-Una vez hemos instalado las dependencias, vamos a arrancar el proyecto. **El proyecto hay que arrancarlo cada vez que te pongas a programar.** Para ello ejecuta el comando:
-
-```bash
+`Bash
 npm run dev
-```
+`
 
-Este comando:
-
-- **Abre una ventana de Chrome y muestra tu página web**, al igual que hace el plugin de VS Code Live Server (Go live).
-- También **observa** todos los ficheros que hay dentro de la carpeta `src/`, para que cada vez que modifiques un fichero **refresca tu página en Chrome**.
-- También **procesa los ficheros** HTML, SASS / CSS y JS. Por ejemplo:
-  - Convierte los ficheros SASS en CSS.
-  - Combina los diferentes ficheros de HTML y los agrupa en uno o varios ficheros HTML.
-
-Después de ejecutar `npm run dev` ya puedes empezar a editar todos los ficheros que están dentro de la carpeta `src/` y programar cómodamente.
+Autora
+Cristina Colet

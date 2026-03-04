@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Little Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/modulo-1-evaluacion-final-Colet-Cristina/images/favicon.png" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script type="module" crossorigin src="/modulo-1-evaluacion-final-Colet-Cristina/index.js"></script>
+    <link rel="modulepreload" crossorigin href="/modulo-1-evaluacion-final-Colet-Cristina/js/main.js">
+    <link rel="stylesheet" crossorigin href="/modulo-1-evaluacion-final-Colet-Cristina/assets/main-BwKa1cEt.css">
+  </head>
+  <!-- -------------  -----------------  -->
+  <body>
+    <!-- ------------------------------  -->
+    <header>
+      <div class="header">
+        <h1>Little Shop</h1>
+      </div>
+    </header>
+    <main class="main js_main">
+      <!-- -----------Buscador ------------------  -->
+      <div class="filter js_filter">
+        <input
+          class="filter-input js_filterInput"
+          type="text"
+          id="filter-name"
+          name="filter-name"
+          placeholder="Example: Woman"
+        />
+        <button class="filter-btn js_filterBtn">Filter</button>
+      </div>
+      <!-- ---------- Carrito ---------------  -->
+      <div class="cart js_cart">
+        <h2 class="shop">Shopping cart</h2>
+        <button class="cart-delete js_cartDelete">Delete</button>
+        <button class="number-products js_numberProducts">Items: 0</button>
+        <ul class="cart-list js_cartList"></ul>
+      </div>
+
+      <!-- ------------Productos------------------  -->
+      <div class="products js_products">
+        <h2 class="products-title">Products</h2>
+        <ul class="products-list js_productsList"></ul>
+      </div>
+      <button class="scroll-top js_scrollTop" title="Back to top">Top</button>
+    </main>
+
+    <footer class="footer js_footer">
+      <span>Hecho con 💜 y mucho ☕</span>
+      <p class="text-footer js_textFooter">© C.Colet 2025/2026</p>
+    </footer>
+    <!-- ------------------------------  -->
+
+  </body>
+  <!-- ------------------------------  -->
+</html>

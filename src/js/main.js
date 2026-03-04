@@ -14,11 +14,12 @@ const scrollTopBtn = document.querySelector(".js_scrollTop");
 // SECCIÓN DE DATOS  ==========================================================
 // Variables que creamos para almacenar información
 
-let products = []; // Guarda los productos del servidor
+let products = []; // Guarda los productos del servidor(API)
 let cart = []; // Guarda los  productos del carrito
 
 // SECCIÓN DE FUNCIONES DE PINTADO (RENDER)  ======================================================
 
+// número total de productos en el icono del carrito
 function updateCartCounter() {
   if (numberProducts) {
     numberProducts.innerHTML = cart.length;

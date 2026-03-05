@@ -1,0 +1,20 @@
+// Importar variables
+@use "core/variables" as vars;
+
+// Importar componentes
+@use "components/layout";
+@use "components/products";
+@use "components/cart";
+@use "components/quantity";
+@use "components/filter";
+@use "components/add-delete";
+@use "components/button-top";
+
+/* ================ GLOBAL STYLES ================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}

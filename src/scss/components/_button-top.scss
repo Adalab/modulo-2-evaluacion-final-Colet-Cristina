@@ -1,0 +1,21 @@
+@use "../core/variables" as vars;
+
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: vars.$primary-color;
+  color: vars.$text-light;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: vars.$shadow;
+  font-size: 20px;
+  z-index: 1000;
+}
+
+.scroll-top:hover {
+  background-color: vars.$secondary-color;
+}

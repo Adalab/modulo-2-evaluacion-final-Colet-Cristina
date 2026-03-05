@@ -1,0 +1,71 @@
+@use "../core/variables" as vars;
+
+.cart {
+  grid-area: cart;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.cart-delete {
+  background-color: vars.$primary-color;
+  color: vars.$text-light;
+  border-radius: vars.$border-radius;
+  padding: 0.625rem 1rem;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  box-shadow: vars.$shadow;
+  cursor: pointer;
+}
+
+.number-products {
+  background-color: vars.$primary-color;
+  color: vars.$text-light;
+  border-radius: vars.$border-radius;
+  padding: 0.5rem 0.5rem;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+  box-shadow: vars.$shadow;
+}
+
+.cart-item {
+  background-color: vars.$text-light;
+  border-radius: vars.$border-radius;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  margin-top: 1rem;
+  border-bottom: 1px solid vars.$border-color;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  list-style: none;
+  min-height: 100px;
+  box-shadow: vars.$shadow;
+}
+
+.cart-item-remove {
+  background-color: vars.$accent-color;
+  color: vars.$text-light;
+  border: none;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  font-weight: bold;
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

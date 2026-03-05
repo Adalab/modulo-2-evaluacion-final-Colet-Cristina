@@ -1,51 +1,56 @@
-🛒 **Tiendecita Online**
+# Little Shop 🛍️
 
-    Tiendecita Online es una aplicación web sencilla desarrollada con HTML, CSS y JavaScript que permite visualizar, buscar y gestionar productos obtenidos desde una API. Además, incluye un carrito de compras y almacenamiento local para mejorar la experiencia del usuario.
+Bienvenida a mi **Little Shop**, una tienda online desarrollada como proyecto final. Esta aplicación permite a las usuarias visualizar productos, filtrarlos por nombre y gestionar un carrito de la compra de forma dinámica.
 
-✨ **Funcionalidades principales**
+## Características
 
-    - Carga de productos desde una API externa.
+- **Visualización de productos:** Listado dinámico de artículos.
+- **Filtrado en tiempo real:** Busca tus productos favoritos fácilmente.
+- **Gestión de carrito:** Añade o elimina productos y visualiza el total de artículos.
+- **Diseño Responsivo:** Adaptado para diferentes tamaños de pantalla.
+- **Arquitectura de estilos:** Organización de SASS mediante arquitectura modular.de JavaScript.
 
-    - Almacenamiento en localStorage para evitar recargar los datos cada vez.
+## Tecnologías utilizadas
 
-    - Búsqueda de productos por nombre, categoría o descripción.
+- **HTML5**
 
-    - Visualización de productos, mostrando:
+- **SASS (SCSS):** Organización modular de estilos.
 
-        - Título
+- **JavaScript (ES6+):** Lógica funcional para la gestión del estado.
 
-        - Imagen
+- **Vite:** Herramienta de compilación y servidor de desarrollo.
 
-        - Precio
+- ## Estructura del proyecto
 
-    - Carrito de compras donde puedes guardar productos seleccionados.
+La estructura sigue un patrón de diseño profesional para facilitar el mantenimiento:
 
-⚙️ **Cómo funciona**
+```text
+├── public/          # Assets estáticos
+├── src/
+│   ├── js/          # Lógica principal (main.js)
+│   └── scss/        # Estilos SASS
+├── index.html       # Estructura principal
+└── vite.config.js   # Configuración de Vite
+```
 
-    Al cargar la página:
+Instalación y ejecución
+Clona el repositorio:
 
-    - Si no hay productos en el localStorage, se obtienen desde la API.
+`Bash
+git clone [(https://github.com/Colet-Cristina/modulo-2-evaluacion-final-Colet-Cristina.git)]
+`
 
-    - Si ya existen productos guardados, se cargan directamente desde el localStorage.
+Instala las dependencias:
 
-    - Búsqueda:
+`Bash
+npm install
+`
 
-        - Escribe el texto que desees (nombre, categoría o descripción) en el campo de búsqueda.
+Inicia el servidor de desarrollo:
 
-        - Pulsa el botón Buscar para filtrar los productos que coincidan.
+`Bash
+npm run dev
+`
 
-    - Carrito de compras:
-
-        - Puedes agregar productos al carrito y mantenerlos guardados mientras navegas por la tienda.
-
-💾 **Tecnologías utilizadas**
-
-        - HTML
-
-        - CSS
-
-        - JavaScript
-
-        - API externa
-
-        - localStorage
+Autora
+Cristina Colet
